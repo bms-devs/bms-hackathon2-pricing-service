@@ -1,23 +1,11 @@
 package org.bmshackathon.reviews;
 
-public class VideoReview {
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+public class VideoReview {
     private Long id;
     private Integer rating;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getRating() {
-        return rating;
-    }
-
-    public void setRating(Integer rating) {
-        this.rating = rating;
-    }
 }
