@@ -17,8 +17,15 @@ import static org.springframework.http.HttpStatus.OK;
 @RestController
 public class VideoPriceController {
 
+    private final VideoPriceService videoPriceService;
+
+    @Autowired
+    public VideoPriceController(final VideoPriceService videoPriceService) {
+        this.videoPriceService = videoPriceService;
+    }
+
     @RequestMapping(value = "/videoPrices/{videoId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<VideoPrice> findOne(@PathVariable Long videoId) {
-        return new ResponseEntity<>(new VideoPrice(123L, BigDecimal.valueOf(456)), HttpStatus.OK);
+    public ResponseEntity<VideoPrice> findOne(@PathVariable final Long videoId) {
+        return new ResponseEntity<>(new VideoPrice(videoId, videoPriceService.videoPrice(videoId)), HttpStatus.OK);
     }
 }
